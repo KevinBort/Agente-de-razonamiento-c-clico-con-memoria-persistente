@@ -1,0 +1,321 @@
+{
+  "thread_id": "demo-001",
+  "metadatos": {
+    "origen_del_modelo": "modelo simulado (offline): las decisiones del LLM vienen de un guion",
+    "recursion_limit": 10,
+    "generada_el": "2026-11-06T11:17:22+00:00"
+  },
+  "llamadas_a_herramientas_por_turno": {
+    "1": 1,
+    "2": 1,
+    "3": 3,
+    "4": 1
+  },
+  "pasos": [
+    {
+      "paso": 1,
+      "turno": 1,
+      "tipo": "pregunta_usuario",
+      "nodo": "usuario",
+      "contenido": "¿Cuántos pedidos tuvo el cliente 102 y cuál fue el total?",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 2,
+      "turno": 1,
+      "tipo": "decision_herramienta",
+      "nodo": "modelo",
+      "contenido": null,
+      "herramienta": "buscar_pedidos",
+      "argumentos": {
+        "cliente_id": 102
+      },
+      "resultado": null
+    },
+    {
+      "paso": 3,
+      "turno": 1,
+      "tipo": "observacion",
+      "nodo": "herramientas",
+      "contenido": null,
+      "herramienta": "buscar_pedidos",
+      "argumentos": null,
+      "resultado": {
+        "cliente_id": 102,
+        "cliente": "Lucía Fernández",
+        "cantidad_pedidos": 3,
+        "total": 14500,
+        "pedidos": [
+          {
+            "pedido_id": "P-1001",
+            "fecha": "2026-08-14",
+            "total": 4500
+          },
+          {
+            "pedido_id": "P-1002",
+            "fecha": "2026-09-03",
+            "total": 3000
+          },
+          {
+            "pedido_id": "P-1003",
+            "fecha": "2026-10-02",
+            "total": 7000
+          }
+        ]
+      }
+    },
+    {
+      "paso": 4,
+      "turno": 1,
+      "tipo": "respuesta_final",
+      "nodo": "modelo",
+      "contenido": "El cliente 102 tuvo 3 pedidos por un total de $14.500.",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 5,
+      "turno": 2,
+      "tipo": "pregunta_usuario",
+      "nodo": "usuario",
+      "contenido": "¿Y qué productos tenía el último?",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 6,
+      "turno": 2,
+      "tipo": "decision_herramienta",
+      "nodo": "modelo",
+      "contenido": null,
+      "herramienta": "obtener_detalle_pedido",
+      "argumentos": {
+        "pedido_id": "P-1003"
+      },
+      "resultado": null
+    },
+    {
+      "paso": 7,
+      "turno": 2,
+      "tipo": "observacion",
+      "nodo": "herramientas",
+      "contenido": null,
+      "herramienta": "obtener_detalle_pedido",
+      "argumentos": null,
+      "resultado": {
+        "pedido_id": "P-1003",
+        "cliente_id": 102,
+        "fecha": "2026-10-02",
+        "items": [
+          {
+            "producto": "Webcam HD",
+            "cantidad": 1,
+            "precio_unitario": 2500,
+            "subtotal": 2500
+          },
+          {
+            "producto": "Soporte para notebook",
+            "cantidad": 2,
+            "precio_unitario": 2250,
+            "subtotal": 4500
+          }
+        ],
+        "total": 7000
+      }
+    },
+    {
+      "paso": 8,
+      "turno": 2,
+      "tipo": "respuesta_final",
+      "nodo": "modelo",
+      "contenido": "El último pedido del cliente 102 es el P-1003 (2 de octubre de 2026) y contenía 1 Webcam HD ($2.500) y 2 Soportes para notebook ($2.250 c/u), por un total de $7.000.",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 9,
+      "turno": 3,
+      "tipo": "pregunta_usuario",
+      "nodo": "usuario",
+      "contenido": "Buscá a Martín Gómez y decime cuántos pedidos tuvo y qué contenía el más reciente.",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 10,
+      "turno": 3,
+      "tipo": "decision_herramienta",
+      "nodo": "modelo",
+      "contenido": null,
+      "herramienta": "buscar_cliente",
+      "argumentos": {
+        "nombre": "Martín Gómez"
+      },
+      "resultado": null
+    },
+    {
+      "paso": 11,
+      "turno": 3,
+      "tipo": "observacion",
+      "nodo": "herramientas",
+      "contenido": null,
+      "herramienta": "buscar_cliente",
+      "argumentos": null,
+      "resultado": {
+        "cantidad": 1,
+        "coincidencias": [
+          {
+            "cliente_id": 205,
+            "nombre": "Martín Gómez",
+            "email": "martin.gomez@example.com"
+          }
+        ]
+      }
+    },
+    {
+      "paso": 12,
+      "turno": 3,
+      "tipo": "decision_herramienta",
+      "nodo": "modelo",
+      "contenido": null,
+      "herramienta": "buscar_pedidos",
+      "argumentos": {
+        "cliente_id": 205
+      },
+      "resultado": null
+    },
+    {
+      "paso": 13,
+      "turno": 3,
+      "tipo": "observacion",
+      "nodo": "herramientas",
+      "contenido": null,
+      "herramienta": "buscar_pedidos",
+      "argumentos": null,
+      "resultado": {
+        "cliente_id": 205,
+        "cliente": "Martín Gómez",
+        "cantidad_pedidos": 2,
+        "total": 18100,
+        "pedidos": [
+          {
+            "pedido_id": "P-2001",
+            "fecha": "2026-09-05",
+            "total": 6800
+          },
+          {
+            "pedido_id": "P-2002",
+            "fecha": "2026-10-20",
+            "total": 11300
+          }
+        ]
+      }
+    },
+    {
+      "paso": 14,
+      "turno": 3,
+      "tipo": "decision_herramienta",
+      "nodo": "modelo",
+      "contenido": null,
+      "herramienta": "obtener_detalle_pedido",
+      "argumentos": {
+        "pedido_id": "P-2002"
+      },
+      "resultado": null
+    },
+    {
+      "paso": 15,
+      "turno": 3,
+      "tipo": "observacion",
+      "nodo": "herramientas",
+      "contenido": null,
+      "herramienta": "obtener_detalle_pedido",
+      "argumentos": null,
+      "resultado": {
+        "pedido_id": "P-2002",
+        "cliente_id": 205,
+        "fecha": "2026-10-20",
+        "items": [
+          {
+            "producto": "Disco SSD 1TB",
+            "cantidad": 1,
+            "precio_unitario": 9800,
+            "subtotal": 9800
+          },
+          {
+            "producto": "Funda protectora",
+            "cantidad": 1,
+            "precio_unitario": 1500,
+            "subtotal": 1500
+          }
+        ],
+        "total": 11300
+      }
+    },
+    {
+      "paso": 16,
+      "turno": 3,
+      "tipo": "respuesta_final",
+      "nodo": "modelo",
+      "contenido": "Martín Gómez (cliente 205) tuvo 2 pedidos por un total de $18.100. El más reciente, P-2002 (20 de octubre de 2026), contenía 1 Disco SSD 1TB ($9.800) y 1 Funda protectora ($1.500).",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 17,
+      "turno": 4,
+      "tipo": "pregunta_usuario",
+      "nodo": "usuario",
+      "contenido": "¿Cuántos pedidos tuvo el cliente 1020?",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    },
+    {
+      "paso": 18,
+      "turno": 4,
+      "tipo": "decision_herramienta",
+      "nodo": "modelo",
+      "contenido": null,
+      "herramienta": "buscar_pedidos",
+      "argumentos": {
+        "cliente_id": 1020
+      },
+      "resultado": null
+    },
+    {
+      "paso": 19,
+      "turno": 4,
+      "tipo": "observacion",
+      "nodo": "herramientas",
+      "contenido": null,
+      "herramienta": "buscar_pedidos",
+      "argumentos": null,
+      "resultado": {
+        "error": "CLIENTE_NO_ENCONTRADO",
+        "detalle": "No existe un cliente con cliente_id=1020.",
+        "ids_parecidos": [
+          102
+        ],
+        "sugerencia": "Confirmá el ID con el usuario o buscá al cliente por nombre."
+      }
+    },
+    {
+      "paso": 20,
+      "turno": 4,
+      "tipo": "respuesta_final",
+      "nodo": "modelo",
+      "contenido": "No encontré ningún cliente con el ID 1020. ¿Te referías al cliente 102 (Lucía Fernández)? Confirmame el ID o decime el nombre y lo busco.",
+      "herramienta": null,
+      "argumentos": null,
+      "resultado": null
+    }
+  ]
+}
